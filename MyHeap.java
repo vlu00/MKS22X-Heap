@@ -17,7 +17,6 @@ public class MyHeap{
         index += 2;
       }
     }
-    System.out.println(index);
     if (2*index+1 < size && data[2*index+1] > data[index]) {
       int temp = data[index];
       data[index] = data[2*index+1];
@@ -25,12 +24,22 @@ public class MyHeap{
     }
   }
 
+  private static void pushUp(int[] data, int index) {
+    while (index != 0 && data[(index-1)/2] < data[index]) {
+      //System.out.println(index);
+      int temp = data[index];
+      data[index] = data[(index-1)/2];
+      data[(index-1)/2] = temp;
+      index = (index-1)/2;
+    }
+  }
+
 
 
   public static void main(String[] args) {
-    int[] A = new int[]{1, 16, 12, 8, 6, 7};
+    int[] A = new int[]{12, 8, 7, 5, 14};
     System.out.println(Arrays.toString(A));
-    pushDown(A, 6, 0);
+    pushUp(A, 4);
     System.out.println(Arrays.toString(A));
   }
 }
