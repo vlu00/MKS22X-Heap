@@ -17,7 +17,15 @@ public class MyHeap{
         index += 2;
       }
     }
+    System.out.println(index);
+    if (2*index+1 < size && data[2*index+1] > data[index]) {
+      int temp = data[index];
+      data[index] = data[2*index+1];
+      data[2*index+1] = temp;
+    }
   }
+
+
 
   public static void main(String[] args) {
     int[] A = new int[]{1, 16, 12, 8, 6, 7};
