@@ -26,7 +26,6 @@ public class MyHeap{
 
   private static void pushUp(int[] data, int index) {
     while (index != 0 && data[(index-1)/2] < data[index]) {
-      //System.out.println(index);
       int temp = data[index];
       data[index] = data[(index-1)/2];
       data[(index-1)/2] = temp;
@@ -34,12 +33,18 @@ public class MyHeap{
     }
   }
 
+  public static void heapify(int[] data) {
+    for (int i = data.length; i > 0; i--) {
+      pushDown(data, data.length, i-1);
+    }
+  }
+
 
 
   public static void main(String[] args) {
-    int[] A = new int[]{12, 8, 7, 5, 14};
+    int[] A = new int[]{5, 8, 16, 12, 7, 0, 4};
     System.out.println(Arrays.toString(A));
-    pushUp(A, 4);
+    heapify(A); 
     System.out.println(Arrays.toString(A));
   }
 }
