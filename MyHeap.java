@@ -39,12 +39,20 @@ public class MyHeap{
     }
   }
 
-
+  public static void heapsort(int[] data) {
+    heapify(data);
+    for (int i = 0; i < data.length; i++) {
+      int temp = data[0];
+      data[0] = data[data.length-i-1];
+      data[data.length-i-1] = temp;
+      pushDown(data, data.length-i, data.length-i-1);
+    }
+  }
 
   public static void main(String[] args) {
     int[] A = new int[]{5, 8, 16, 12, 7, 0, 4};
     System.out.println(Arrays.toString(A));
-    heapify(A); 
+    heapsort(A);
     System.out.println(Arrays.toString(A));
   }
 }
