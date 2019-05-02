@@ -41,11 +41,14 @@ public class MyHeap{
 
   public static void heapsort(int[] data) {
     heapify(data);
+    System.out.println("Heapified " + Arrays.toString(data));
     for (int i = 0; i < data.length; i++) {
       int temp = data[0];
       data[0] = data[data.length-i-1];
       data[data.length-i-1] = temp;
-      pushDown(data, data.length-i, data.length-i-1);
+      System.out.println("Before push " + Arrays.toString(data));
+      pushDown(data, data.length-i-1, 0);
+      System.out.println(Arrays.toString(data));
     }
   }
 
